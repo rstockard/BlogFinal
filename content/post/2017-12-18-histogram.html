@@ -1,0 +1,38 @@
+---
+title: Histogram
+author: Roxanne Stockard-Hicks
+date: '2017-12-18'
+slug: histogram
+categories: []
+tags: []
+---
+
+
+
+<div id="histograms" class="section level3">
+<h3>Histograms</h3>
+<p>First, you need to load the necessary packages:</p>
+<pre class="r"><code>library(Lahman)</code></pre>
+<pre><code>## Warning: package &#39;Lahman&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(sqldf)</code></pre>
+<pre><code>## Warning: package &#39;sqldf&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Warning: package &#39;gsubfn&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Warning: package &#39;proto&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre><code>## Warning: package &#39;RSQLite&#39; was built under R version 3.4.3</code></pre>
+<p>Now, pick the parameter you’d like to look at, which here is weight for all players:</p>
+<pre class="r"><code>query&lt;-&quot;SELECT weight
+ FROM Master&quot;
+
+ result&lt;-sqldf(query)</code></pre>
+<p>Last, create a bar plot for frequency of all weights in the Lahman database:</p>
+<pre class="r"><code>ggplot()+
+   geom_histogram(data=result,aes(x=weight),color=&quot;blue&quot;,fill=&quot;white&quot;,bins=50) +
+   ggtitle(&quot;Body weight&quot;)</code></pre>
+<pre><code>## Warning: Removed 854 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="/Your site URLpost/2017-12-18-histogram_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>

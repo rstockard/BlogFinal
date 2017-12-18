@@ -1,0 +1,41 @@
+---
+title: Bar Plots
+author: Roxanne Stockard-Hicks
+date: '2017-12-18'
+slug: bar-plots
+categories: []
+tags: []
+---
+
+
+
+<div id="bar-plots" class="section level3">
+<h3>Bar Plots</h3>
+<p>It’s good to start out with loading packages every time you start a project, just be sure everything is there and roped in with the library:</p>
+<pre class="r"><code>library(Lahman)</code></pre>
+<pre><code>## Warning: package &#39;Lahman&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(sqldf)</code></pre>
+<pre><code>## Warning: package &#39;sqldf&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Warning: package &#39;gsubfn&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Warning: package &#39;proto&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre><code>## Warning: package &#39;RSQLite&#39; was built under R version 3.4.3</code></pre>
+<p>Here is the search for data for our bar plot. We are looking for all the stolen bases each year by one player, loftoke01:</p>
+<pre class="r"><code>query&lt;-&quot;SELECT teamID,sum(SB) AS total_SB
+FROM Batting
+WHERE playerID=&#39;loftoke01&#39;
+GROUP BY teamID
+ORDER BY sum(SB)&quot;
+
+result&lt;-sqldf(query)</code></pre>
+<p>Here’s the preliminary coding for a bar plot:</p>
+<pre class="r"><code>result$teamID&lt;-factor(result$teamID,levels=result$teamID)</code></pre>
+<p>And now the bar plot itself:</p>
+<pre class="r"><code>ggplot()+
+  geom_bar(data=result,aes(x=teamID,y=total_SB),stat=&#39;identity&#39;)</code></pre>
+<p><img src="/Your site URLpost/2017-12-18-bar-plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>

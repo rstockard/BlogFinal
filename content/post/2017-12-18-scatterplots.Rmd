@@ -1,18 +1,21 @@
 ---
-title: Scatterplots!
+title: Scatterplots
 author: Roxanne Stockard-Hicks
 date: '2017-12-18'
 slug: scatterplots
 categories: []
 tags: []
-thumbnail: path/thumbnail.jpg
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(collapse = TRUE)
+###Scatterplots
+
+Set-up:
+```{r}
 library(ggplot2)
+library(Lahman)
+library(sqldf)
 ```
-####Setup
+######Setup
 First, let's set up some randomized data points:
 
 ```{r}
@@ -25,7 +28,7 @@ x
 ```{r}
 y
 ```
-####Progress
+######Progress
 Now let's make the data frame:
 
 ```{r}
@@ -34,11 +37,10 @@ df<-data.frame(x,y)
 df
 ```
 
-####Results!
+######Results!
 Finally, the scatterplot!
 
 ```{r}
 ggplot()+
 geom_point(data=df,aes(x,y))
 ```
-

@@ -1,28 +1,33 @@
 ---
-title: "Histograms!"
-author: "Roxanne Stockard-Hicks
+title: Histogram
+author: Roxanne Stockard-Hicks
 date: '2017-12-18'
-slug: histograms
-categories: [R, histograms]
+slug: histogram
+categories: []
 tags: []
-thumbnail: path/thumbnail.jpg
 ---
 
-First, you need to load the necessary packages:
+###Histograms
 
+First, you need to load the necessary packages:
+```{r}
 library(Lahman)
 library(ggplot2)
 library(sqldf)
+```
 
 Now, pick the parameter you'd like to look at, which here is weight for all players:
-
+```{r}
 query<-"SELECT weight
  FROM Master"
 
  result<-sqldf(query)
+```
 
 Last, create a bar plot for frequency of all weights in the Lahman database:
 
+```{r}
 ggplot()+
    geom_histogram(data=result,aes(x=weight),color="blue",fill="white",bins=50) +
    ggtitle("Body weight")
+```

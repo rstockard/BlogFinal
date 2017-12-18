@@ -1,0 +1,41 @@
+---
+title: Time Series
+author: Roxanne Stockard-Hicks
+date: '2017-12-18'
+slug: time-series
+categories: []
+tags: []
+---
+
+
+
+<div id="time-series" class="section level3">
+<h3>Time Series</h3>
+<p>First again, we need to load the necessary packages:</p>
+<pre class="r"><code>library(Lahman)</code></pre>
+<pre><code>## Warning: package &#39;Lahman&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(sqldf)</code></pre>
+<pre><code>## Warning: package &#39;sqldf&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Warning: package &#39;gsubfn&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Warning: package &#39;proto&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre><code>## Warning: package &#39;RSQLite&#39; was built under R version 3.4.3</code></pre>
+<p>Pick the data we want, in this case number of home runs Babe Ruth made each year he played baseball:</p>
+<pre class="r"><code> query&lt;-&quot;SELECT yearID,HR
+ FROM Batting
+ WHERE playerID=&#39;ruthba01&#39;&quot;
+
+ result&lt;-sqldf(query)</code></pre>
+<p>Last, here is how to make a time series chart with this information:</p>
+<pre class="r"><code> ggplot()+
+   geom_point(data=result,aes(x=yearID,y=HR))+
+   geom_line(data=result,aes(x=yearID,y=HR))+
+   ggtitle(&quot;Ruths Homeruns&quot;)+
+   xlab(&quot;Year&quot;)+
+   ylab(&quot;Homeruns&quot;)</code></pre>
+<p><img src="/Your site URLpost/2017-12-18-time-series_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
