@@ -1,0 +1,47 @@
+theme = "hugo_theme_pickles"
+baseurl = "Your site URL"
+languageCode = "en-us"
+Title = "Data Science Final"
+# Copyright notice. This is displayer in the footer.
+copyright = "&copy; Copyright notice"
+
+[params]
+  paginate = 10
+  # Social accounts. Link to these accounts are displayed in the header and
+  # footer
+  github = "rstockard"
+  author = "Roxanne Stockard-Hicks"
+  authorwebsite = "example.com"
+  contact = "rstock01@lakers.mercyhurst.edu"
+
+[[menu.main]]
+    name = "Blog"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "/about"
+    weight = 2
+
+[[menu.main]]
+    identifier = "theme"
+    name = "/theme"
+    weight = 3
+
+[[menu.main]]
+    parent = "theme"
+    name = "creating-a-new-theme"
+    url = "/posts/creating-a-new-theme"
+    weight = 1
+
+[[menu.main]]
+    parent = "theme"
+    name = "migrate-from-jekyll"
+    url = "/posts/migrate-from-jekyll"
+    weight = 2
+
+[[menu.main]]
+    name = "Tags"
+    url = "/tags"
+    weight = 4
